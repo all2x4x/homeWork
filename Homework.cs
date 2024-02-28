@@ -29,3 +29,52 @@ string massive = new string[3];
 Программа FilterStrings принимает массив строк и формирует
 новый массив из строк, длина которых меньше или равна 3 символам.
 Она реализована без использования коллекций, только с помощью массивов.
+
+
+class Program
+{
+    static string[] FilterStrings(string[] array)
+    {
+        int count = 0;
+
+        foreach (string str in array)
+        {
+            if (str.Length <= 3)
+            {
+                count++;
+            }
+        }
+
+        string[] result = new string[count];
+        int index = 0;
+
+        foreach (string str in array)
+        {
+            if (str.Length <= 3)
+            {
+                result[index++] = str;
+            }
+        }
+
+        return result;
+    }
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Введите массив строк через запятую:");
+        string[] array = Console.ReadLine().Split(',');
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = array[i].Trim();
+        }
+
+        string[] filteredArray = FilterStrings(array);
+
+        Console.WriteLine("Новый массив:");
+        foreach (string str in filteredArray)
+        {
+            Console.WriteLine(str);
+        }
+    }
+}
